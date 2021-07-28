@@ -14,20 +14,19 @@ import java.util.Map;
 
 @Entity
 @Data
-//@NamedEntityGraph(name = "book.author", attributeNodes = @NamedAttributeNode("author"))
+@Table(name = "book")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String title;
 
+    private String resume;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_Author", nullable = false)
+    @JoinColumn(name = "id_author", nullable = false)
     private Author author;
-
-
 
     public Book() {
         this("");
@@ -35,8 +34,6 @@ public class Book {
 
     public Book(String title) {
         this.title = title;
-
     }
-
 
 }

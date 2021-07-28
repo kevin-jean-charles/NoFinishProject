@@ -10,9 +10,4 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Author extends User {
 
-//    crud Book
-//    crud Chapter
-//      crud Hero
-
-
 }
