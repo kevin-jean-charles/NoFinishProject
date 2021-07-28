@@ -7,14 +7,14 @@ import javax.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  *
  */
 @Data
 @Entity
 public class Chapter {
-    //Warning, this index should be reseted when changing
-    //book that will currently edited
+
     private static int globalIndex = 0;
 
     @Id
@@ -24,9 +24,11 @@ public class Chapter {
     private String caption;
     private String text;
 
-    @ElementCollection(targetClass = Chapter.class)
-    @MapKeyColumn(name="Option_Id")
-    //private Map<Integer, Chapter> options;
+//    @ManyToMany
+//    @MapKeyColumn(name = "options_id")
+//    private Map<Integer, Chapter> options;
+
+
     private boolean intro;
     private boolean end;
 
@@ -40,7 +42,7 @@ public class Chapter {
     public Chapter(String text, String caption) {
         this.text = text;
         this.caption = caption;
-        //options = new HashMap<>();
+//        options = new HashMap<>();
         id = globalIndex++;
     }
 

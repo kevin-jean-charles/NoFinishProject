@@ -18,14 +18,19 @@ import java.util.Map;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column
     private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_Author", nullable = false)
-    private Author author;
+    @Column
+    private String resume;
+
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "id_author", nullable = false)
+//    private Author author;
 
 
 
@@ -35,6 +40,8 @@ public class Book {
 
     public Book(String title) {
         this.title = title;
+//        this.author = author;
+        this.resume = resume;
 
     }
 
