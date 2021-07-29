@@ -7,8 +7,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './authentification/login/login.component';
+import { SignupComponent } from './authentification/signup/signup.component';
 
 @NgModule({
   declarations: [

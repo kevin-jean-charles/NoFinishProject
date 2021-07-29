@@ -1,22 +1,17 @@
 package com.nofinish.ldvelh.service;
 
 import com.nofinish.ldvelh.model.Book;
-import com.nofinish.ldvelh.repo.BookRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
-public class BookService {
+import java.util.List;
 
-    @Autowired
-    private BookRepo bookRepo;
+public interface BookService {
+    Book saveBook(Book book);
 
-    public BookService(BookRepo bookrepo) {
-        this.bookRepo = bookrepo;
-    }
+    List<Book> findAllBooks();
 
-    public Book saveBook(Book book) {
-        return bookRepo.save(book);
-    }
+    Book findByTitle(String title);
 
+    Book updateBook(Book book);
+
+    void deleteBook(Book book);
 }

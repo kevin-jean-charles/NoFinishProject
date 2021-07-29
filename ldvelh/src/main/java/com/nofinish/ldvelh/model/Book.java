@@ -1,12 +1,9 @@
 package com.nofinish.ldvelh.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
@@ -18,22 +15,17 @@ import java.util.Map;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "hero_id")
+    private Long id;
+
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "resume")
     private String resume;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_author", nullable = false)
-    private Author author;
-
-    public Book() {
-        this("");
-    }
-
-    public Book(String title) {
-        this.title = title;
-    }
-
+    @OneToOne
+    @JoinColumn(name = "book_hero_id")
+    private Hero hero;
 }
