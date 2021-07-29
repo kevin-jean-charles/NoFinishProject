@@ -1,28 +1,33 @@
 package com.nofinish.ldvelh.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "hero")
+@Data
 public class Hero {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column(name = "hero_id")
+    private Long id;
 
-    @Column
-    private String name;
+    @Column(name = "hero_name")
+    private String heroName;
 
-    @Column
-    private int pv;
+    @Column(name = "livePoint")
+    private int livePoint;
 
-    @Column
+    @Column(name = "strength")
     private int strength;
 
-    @Column
+    @Column(name = "agility")
     private int agility;
 
-    @Column
+    @Column(name = "intelligence")
     private int intelligence;
 }

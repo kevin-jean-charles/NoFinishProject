@@ -12,12 +12,10 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
 
     @Autowired
-    private  BookRepo bookRepo;
-
+    private BookRepo bookRepo;
 
     @Override
     public Book saveBook(Book book) {
-
         return bookRepo.save(book);
     }
 
