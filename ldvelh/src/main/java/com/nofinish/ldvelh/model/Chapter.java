@@ -13,37 +13,31 @@ import java.util.Map;
  */
 @Data
 @Entity
+@Table(name = "chapter")
 public class Chapter {
-
-    private static int globalIndex = 0;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "chapter_id")
+    private Long id;
 
+    @Column(name = "caption")
     private String caption;
+
+    @Transient
     private String text;
 
-//    @ManyToMany
-//    @MapKeyColumn(name = "options_id")
-//    private Map<Integer, Chapter> options;
-
-
+    @Transient
     private boolean intro;
+
+    @Transient
     private boolean end;
 
-    /**
-     * Default constructor
-     */
-    public Chapter() {
-        this("","");
-    }
+    @Column(name = "global_chapter_index")
+    private static Long globalIndex;
 
-    public Chapter(String text, String caption) {
-        this.text = text;
-        this.caption = caption;
-//        options = new HashMap<>();
-        id = globalIndex++;
+    public void setId(Long id) {
+        globalIndex++;
+        this.id = globalIndex;
     }
-
 }

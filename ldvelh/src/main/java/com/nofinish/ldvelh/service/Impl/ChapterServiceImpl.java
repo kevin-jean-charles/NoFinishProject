@@ -34,25 +34,21 @@ public class ChapterServiceImpl implements ChapterService {
 
     @Override
     public List<Chapter> findAllChapters() {
-
         return  chapterRepo.findAll();
     }
 
     @Override
     public Chapter findByCaption(String caption) {
-
         return chapterRepo.findByCaption(caption);
     }
 
     @Override
     public Chapter updateChapter(Chapter chapter) {
-
         return chapterRepo.save(chapter);
     }
 
     @Override
     public void deleteChapter(Chapter chapter) {
-
         chapterRepo.delete(chapter);
     }
 

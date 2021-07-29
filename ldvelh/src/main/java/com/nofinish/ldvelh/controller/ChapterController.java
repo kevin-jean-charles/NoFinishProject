@@ -38,7 +38,7 @@ public class ChapterController {
     }
 
     @PutMapping
-    public ResponseEntity<Chapter> updateChapterById(@RequestBody Chapter chapter){
+    public ResponseEntity<Chapter> updateChapter(@RequestBody Chapter chapter){
         Chapter updatedChapter = chapterService.updateChapter(chapter);
         return new ResponseEntity<>(updatedChapter, HttpStatus.OK);
     }

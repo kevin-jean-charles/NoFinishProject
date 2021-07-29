@@ -1,10 +1,26 @@
 package com.nofinish.ldvelh.model;
 
-import javax.persistence.Entity;
 
+import lombok.Data;
 
-public class Player extends User {
+import javax.persistence.*;
 
-//    play
+@Data
+@Entity
+@Table(name = "player")
+public class Player {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "player_id")
+    private Long id;
+
+    @Column(name = "user_name")
+    private String user_name;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "password")
+    private String password;
 }
