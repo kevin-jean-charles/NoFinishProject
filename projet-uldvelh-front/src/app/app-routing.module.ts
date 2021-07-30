@@ -7,9 +7,11 @@ import { LayoutComponent } from './layout/layout.component';
 import { LibraryListEditorComponent } from './library-list-editor/library-list-editor.component';
 import { LibraryListPlayerComponent } from './library-list-player/library-list-player.component';
 import { LoginComponent } from './login/login.component';
-import { OhFourComponent } from './oh-four/oh-four.component';
+//import { OhFourComponent } from './oh-four/oh-four.component';
 
 const routes: Routes = [
+  {path: '', component: LayoutComponent, children : [ 
+
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
   { path: 'inscription', component: InscriptionComponent },
@@ -17,7 +19,8 @@ const routes: Routes = [
   { path: 'library-editor', component: LibraryListEditorComponent },
   { path: 'editor-list', component: EditorListComponent },
   { path: 'book-list', component: BookListComponent },
-  { path: '**', redirectTo: '/not-found' },
+  // { path: '**', redirectTo: '/not-found' },
+  ]},
 ];
 
 @NgModule({
