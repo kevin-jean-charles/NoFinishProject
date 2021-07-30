@@ -1,49 +1,36 @@
 package com.nofinish.ldvelh.model;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
 
+import java.util.Set;
 
-/**
- *
- */
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 public class Chapter {
 
-    private static int globalIndex = 0;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
+    private int number;
     private String caption;
     private String text;
-
-//    @ManyToMany
-//    @MapKeyColumn(name = "options_id")
-//    private Map<Integer, Chapter> options;
-
-
     private boolean intro;
     private boolean end;
 
-    /**
-     * Default constructor
-     */
-    public Chapter() {
-        this("","");
-    }
+ /*   @ManyToMany(fetch = FetchType.EAGER)
+//    private Map<Long, Chapter> listOptions = new HashMap<>();
+    private Set<Option> listOptions;
+*/
 
-    public Chapter(String text, String caption) {
-        this.text = text;
-        this.caption = caption;
-//        options = new HashMap<>();
-        id = globalIndex++;
-    }
+
+
 
 }
+

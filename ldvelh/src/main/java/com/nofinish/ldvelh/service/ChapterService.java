@@ -5,13 +5,13 @@ import com.nofinish.ldvelh.model.Chapter;
 import java.util.List;
 
 public interface ChapterService {
-    Chapter saveChapter(Chapter chapter);
+    Chapter createOrUpdateChapter(Chapter chapter);
 
     List<Chapter> findAllChapters();
 
-    Chapter findByCaption(String caption);
-
-    Chapter updateChapter(Chapter chapter);
-
     void deleteChapter(Chapter chapter);
+
+    Chapter findById(Long id);
+
+    void deleteChapterById(Long id);
 }

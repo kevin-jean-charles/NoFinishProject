@@ -1,6 +1,7 @@
 package com.nofinish.ldvelh.controller;
 
 import com.nofinish.ldvelh.model.Chapter;
+import com.nofinish.ldvelh.service.BookService;
 import com.nofinish.ldvelh.service.ChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,39 +13,56 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200/")
 @Controller
-@RequestMapping("/chapters")
+@RequestMapping("/api/chapters")
 public class ChapterController {
 
     @Autowired
     private ChapterService chapterService;
+    @Autowired
+    private BookService bookService;
 
 
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<Chapter> createChapter(@RequestBody Chapter chapter){
-        Chapter newChapter = chapterService.saveChapter(chapter);
+        Chapter newChapter = chapterService.createOrUpdateChapter(chapter);
         return new ResponseEntity<>(newChapter, HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+
+
+    @GetMapping("")
     public ResponseEntity<List<Chapter>> getAllChapters(){
         List<Chapter> listChapters = chapterService.findAllChapters();
-        return  new ResponseEntity<>(listChapters, HttpStatus.OK);
+        return new ResponseEntity<>(listChapters, HttpStatus.OK);
     }
 
-    @GetMapping("/{title}")
-    public ResponseEntity<Chapter> getByCaption(@PathVariable String caption){
-        Chapter chapter = chapterService.findByCaption(caption);
-        return  new ResponseEntity<>(chapter, HttpStatus.OK);
+    @GetMapping("/{id}")
+    public ResponseEntity<Chapter> getById(@PathVariable Long id){
+        Chapter chapter = chapterService.findById(id);
+        return new ResponseEntity<>(chapter, HttpStatus.OK);
     }
 
-    @PutMapping
-    public ResponseEntity<Chapter> updateChapterById(@RequestBody Chapter chapter){
-        Chapter updatedChapter = chapterService.updateChapter(chapter);
+//    @PostMapping("/{book_id}/chapter")
+//    public ResponseEntity<Chapter> addChapterToBook(@PathVariable("book_id") Long bookId, @RequestBody Chapter chapter) {
+//        Chapter updateChapter = chapterService.saveChapter(chapter);
+//        return new ResponseEntity<>(updateChapter, HttpStatus.OK);
+//    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Chapter> updateChapter(@RequestBody Chapter chapter){
+        Chapter updatedChapter = chapterService.createOrUpdateChapter(chapter);
         return new ResponseEntity<>(updatedChapter, HttpStatus.OK);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Chapter> deleteChapterById(@RequestBody Chapter chapter){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Chapter> deleteChapter(@PathVariable Long id){
+        chapterService.deleteChapterById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @DeleteMapping()
+    public ResponseEntity<Chapter> deleteChapters(@RequestBody Chapter chapter){
         chapterService.deleteChapter(chapter);
         return new ResponseEntity<>(HttpStatus.OK);
     }
