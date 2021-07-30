@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -18,6 +18,7 @@ import { EditorComponent } from './editor/editor.component';
 import { EditorListComponent } from './editor/editor-list/editor-list.component';
 import { EditorDetailsComponent } from './editor/editor-details/editor-details.component';
 import { LibraryListEditorComponent } from './library-list-editor/library-list-editor.component';
+import { AddBookComponent } from './add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +37,14 @@ import { LibraryListEditorComponent } from './library-list-editor/library-list-e
     EditorComponent,
     EditorListComponent,
     EditorDetailsComponent,
-    LibraryListEditorComponent
+    LibraryListEditorComponent,
+    AddBookComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

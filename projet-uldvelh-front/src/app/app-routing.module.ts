@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddBookComponent } from './add-book/add-book.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { EditorListComponent } from './editor/editor-list/editor-list.component';
 import { InscriptionComponent } from './inscription/inscription.component';
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'library-editor', component: LibraryListEditorComponent },
   { path: 'editor-list', component: EditorListComponent },
   { path: 'book-list', component: BookListComponent },
+  { path: 'add-book', component: AddBookComponent },
+
   // { path: '**', redirectTo: '/not-found' },
   ]},
 ];
