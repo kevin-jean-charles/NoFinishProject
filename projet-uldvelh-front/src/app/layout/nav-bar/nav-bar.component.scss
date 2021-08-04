@@ -1,0 +1,21 @@
+.navbar{
+        background-color:#984C0C; 
+        
+}
+.navbar-expand-lg,.navbar-light,.bg-light{
+    padding-left: 5rem;
+    
+    .dropdown-item{
+        color: white;
+    }
+    .dropdown-menu{
+        background-color: #FECBA1;
+    } 
+    .dropdown-item:hover{
+        background-color: #FD9843;
+    } 
+}
+
+.active-orange{
+    background-color: #FD9843;
+}
