@@ -1,5 +1,6 @@
 package com.nofinish.ldvelh.service.Impl;
 
+import com.nofinish.ldvelh.model.Book;
 import com.nofinish.ldvelh.model.Chapter;
 import com.nofinish.ldvelh.repo.BookRepo;
 import com.nofinish.ldvelh.repo.ChapterRepo;
@@ -67,5 +68,15 @@ public class ChapterServiceImpl implements ChapterService {
         chapterRepo.deleteById(id);
     }
 
-
+    @Override
+    public Chapter linkOptionToChapter(Long id, Chapter chapter) {
+        Optional<Chapter> currentChapter = chapterRepo.findById(id);
+        Chapter updatedChapter = null;
+        if (currentChapter.isPresent()) {
+            updatedChapter = currentChapter.get();
+            updatedChapter.getListOptions().add(chapter);
+            chapterRepo.save(updatedChapter);
+        }
+        return updatedChapter;
+    }
 }

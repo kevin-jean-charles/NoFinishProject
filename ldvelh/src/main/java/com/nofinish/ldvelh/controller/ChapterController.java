@@ -28,6 +28,11 @@ public class ChapterController {
         return new ResponseEntity<>(newChapter, HttpStatus.OK);
     }
 
+    @PostMapping("/{id}/list_options") //= {id} = chapterId
+    public ResponseEntity<Chapter> linkOptionToChapter(@PathVariable Long id, @RequestBody Chapter chapter){
+         Chapter modifiedChapter = chapterService.linkOptionToChapter(id, chapter);
+        return new ResponseEntity<>(modifiedChapter, HttpStatus.OK);
+    }
 
 
     @GetMapping("")
@@ -42,11 +47,6 @@ public class ChapterController {
         return new ResponseEntity<>(chapter, HttpStatus.OK);
     }
 
-//    @PostMapping("/{book_id}/chapter")
-//    public ResponseEntity<Chapter> addChapterToBook(@PathVariable("book_id") Long bookId, @RequestBody Chapter chapter) {
-//        Chapter updateChapter = chapterService.saveChapter(chapter);
-//        return new ResponseEntity<>(updateChapter, HttpStatus.OK);
-//    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Chapter> updateChapter(@RequestBody Chapter chapter){
