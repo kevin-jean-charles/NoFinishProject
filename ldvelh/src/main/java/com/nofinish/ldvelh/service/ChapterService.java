@@ -14,4 +14,6 @@ public interface ChapterService {
     Chapter findById(Long id);
 
     void deleteChapterById(Long id);
+
+    Chapter linkOptionToChapter(Long id, Chapter chapter);
 }

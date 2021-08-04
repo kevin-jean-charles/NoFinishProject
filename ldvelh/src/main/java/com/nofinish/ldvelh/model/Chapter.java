@@ -1,11 +1,13 @@
 package com.nofinish.ldvelh.model;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -23,11 +25,10 @@ public class Chapter {
     private String text;
     private boolean intro;
     private boolean end;
+    private  String optionName;
 
- /*   @ManyToMany(fetch = FetchType.EAGER)
-//    private Map<Long, Chapter> listOptions = new HashMap<>();
-    private Set<Option> listOptions;
-*/
+    @ManyToMany
+    private List<Chapter> listOptions;
 
 
 
