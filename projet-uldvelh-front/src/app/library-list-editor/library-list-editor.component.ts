@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs';
+import { BookPayload } from '../add-book/book-payload';
+import { BookService } from '../service/book.service';
+
+
 @Component({
   selector: 'app-library-list-editor',
   templateUrl: './library-list-editor.component.html',
@@ -7,9 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LibraryListEditorComponent implements OnInit {
 
-  constructor() { }
+  books$!: Observable<Array<BookPayload>>;
+
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
+    this.books$ = this.bookService.getAllBooks();
+
   }
 
 }

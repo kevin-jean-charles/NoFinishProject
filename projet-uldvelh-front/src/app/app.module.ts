@@ -19,6 +19,9 @@ import { EditorListComponent } from './editor/editor-list/editor-list.component'
 import { EditorDetailsComponent } from './editor/editor-details/editor-details.component';
 import { LibraryListEditorComponent } from './library-list-editor/library-list-editor.component';
 import { AddBookComponent } from './add-book/add-book.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,13 @@ import { AddBookComponent } from './add-book/add-book.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule, 
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
+    // NgxWebstorageModule.forRoot(),
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

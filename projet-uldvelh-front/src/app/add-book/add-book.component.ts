@@ -15,28 +15,35 @@ export class AddBookComponent implements OnInit {
   bookPayload: BookPayload ;
   title = new FormControl('');
 
+  resume = new FormControl('');
+
 
   constructor(private bookService: BookService, private router: Router) {
     this.addBookForm = new FormGroup({
-      title: this.title
+
+      title: this.title,
+      resume: this.resume
     });
     this.bookPayload = {
       id: '',
-      title: ''
+      title: '',
+      resume:''
     }
     
     
   }
-  ngOnInit(): void {
+
+  ngOnInit() {
   }
 
   addBook() {
- 
     this.bookPayload.title = this.addBookForm.get('title')?.value;
+    this.bookPayload.resume = this.addBookForm.get('resume')?.value;
     
-    this.bookService.addBook(this.bookPayload).subscribe(data => {
-      this.router.navigateByUrl('/');
-      
+
+    this.bookService.createBook(this.bookPayload).subscribe(data => {
+      this.router.navigateByUrl('/library-editor');
+
     }, error => {
       console.log('Failure Response');
     })

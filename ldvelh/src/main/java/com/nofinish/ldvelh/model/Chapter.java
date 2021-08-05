@@ -1,47 +1,37 @@
 package com.nofinish.ldvelh.model;
 
-
+import com.fasterxml.jackson.annotation.JsonFilter;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
 
-/**
- *
- */
+import java.util.List;
+import java.util.Set;
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 public class Chapter {
-    //Warning, this index should be reseted when changing
-    //book that will currently edited
-    private static int globalIndex = 0;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
+    private int number;
     private String caption;
     private String text;
-
-    @ElementCollection(targetClass = Chapter.class)
-    @MapKeyColumn(name="Option_Id")
-    //private Map<Integer, Chapter> options;
     private boolean intro;
     private boolean end;
+    private  String optionName;
 
-    /**
-     * Default constructor
-     */
-    public Chapter() {
-        this("","");
-    }
+    @ManyToMany
+    private List<Chapter> listOptions;
 
-    public Chapter(String text, String caption) {
-        this.text = text;
-        this.caption = caption;
-        //options = new HashMap<>();
-        id = globalIndex++;
-    }
+
+
 
 }
+
