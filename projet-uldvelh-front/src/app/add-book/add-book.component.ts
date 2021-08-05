@@ -14,11 +14,13 @@ export class AddBookComponent implements OnInit {
   addBookForm: FormGroup ;
   bookPayload: BookPayload ;
   title = new FormControl('');
+
   resume = new FormControl('');
 
 
   constructor(private bookService: BookService, private router: Router) {
     this.addBookForm = new FormGroup({
+
       title: this.title,
       resume: this.resume
     });
@@ -30,6 +32,7 @@ export class AddBookComponent implements OnInit {
     
     
   }
+
   ngOnInit() {
   }
 
@@ -40,7 +43,7 @@ export class AddBookComponent implements OnInit {
 
     this.bookService.createBook(this.bookPayload).subscribe(data => {
       this.router.navigateByUrl('/library-editor');
-      
+
     }, error => {
       console.log('Failure Response');
     })

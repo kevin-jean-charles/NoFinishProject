@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute } from '@angular/router';
 import { BookPayload } from '../add-book/book-payload';
 import { BookService } from '../service/book.service';
+
 
 @Component({
   selector: 'app-book-card',
@@ -9,6 +11,7 @@ import { BookService } from '../service/book.service';
   styleUrls: ['./book-card.component.scss']
 })
 export class BookCardComponent implements OnInit {
+
  
   permaLink: any;
 
@@ -27,6 +30,5 @@ export class BookCardComponent implements OnInit {
       console.log('Failure Response');
     })
 
-  }
 
 }
