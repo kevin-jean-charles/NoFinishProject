@@ -1,7 +1,6 @@
 export class BookPayload{
-    id!: String;
+    id!: number;
     title!: String;
-
     resume!: String;
 
   }

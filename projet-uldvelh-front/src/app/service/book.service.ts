@@ -24,7 +24,11 @@ export class BookService {
 
   getBook(permaLink: Number):Observable<BookPayload>{
     return this.httpClient.get<BookPayload>('http://localhoast/8080/api/books/' + permaLink)
-
-
   }
+
+  updateBook(bookPayload: BookPayload){
+    return this.httpClient.post('http://localhost:8080/api/books', bookPayload);
+  }
+
+
 }

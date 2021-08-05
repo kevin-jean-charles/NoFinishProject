@@ -12,9 +12,7 @@ import { BookService } from '../service/book.service';
 })
 export class BookCardComponent implements OnInit {
 
- 
   permaLink: any;
-
   book!: BookPayload;
 
   constructor(private router: ActivatedRoute, private bookService: BookService) { }
@@ -29,6 +27,8 @@ export class BookCardComponent implements OnInit {
     },(err: any) => {
       console.log('Failure Response');
     })
+  }
 
-
+  updateBookById(id: number){
+  }
 }

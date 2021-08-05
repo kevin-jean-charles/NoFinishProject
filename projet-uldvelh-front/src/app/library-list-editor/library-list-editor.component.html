@@ -13,32 +13,8 @@
 
             <ng-template #block>
 
-                <div *ngFor="let books of books" class="card">
-                    <img src="../../assets/image/elfo.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="books/{{books.id}}"> {{books?.title}} </a><span>(Type)</span></h5>
-                        <p class="card-text">{{books?.resume}}</p>
-                        <div class="group-btn-editor">
-                            <button type="button" class="btn btn-primary">Tester</button>
-                            <button type="button" class="btn btn-success">Publier</button>
-                            <button type="button" class="btn btn-danger">Supprimer</button>
-                            <button type="button" class="btn btn-warning">Dupliquer</button>
-                            <button type="button" class="btn btn-info">Modifier</button>
-                        </div>
-                        <div class="group-btn-editor">
-                            <button type="button" class="btn btn-warning">Jouer</button>
-                            <button type="button" class="btn btn-warning">Recommencer</button>
-                            <button type="button" class="btn btn-success">Reprendre</button>
-                            <button type="button" class="btn btn-danger">Supprimer</button>
-                        </div>
-                    </div>
-                    <div class="card-footer player">
-                        <small class="text-muted">Dernière connexion :</small>
-                    </div>
-                    <div class="card-footer user">
-                        <small class="text-muted">Dernière modification :</small><br>
-                        <small class="text-muted">Date de création :</small>
-                    </div>
+                <div *ngFor="let book of books" class="card">
+                  <app-book-card ></app-book-card>
                 </div>
 
             </ng-template>

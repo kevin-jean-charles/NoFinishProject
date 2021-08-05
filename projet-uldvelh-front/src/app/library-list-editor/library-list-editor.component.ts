@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { BookPayload } from '../add-book/book-payload';
 import { BookService } from '../service/book.service';
 
-
 @Component({
   selector: 'app-library-list-editor',
   templateUrl: './library-list-editor.component.html',
@@ -18,7 +17,6 @@ export class LibraryListEditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.books$ = this.bookService.getAllBooks();
-
   }
 
 }
