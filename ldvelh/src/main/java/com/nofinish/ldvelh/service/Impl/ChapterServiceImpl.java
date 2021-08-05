@@ -1,12 +1,11 @@
 package com.nofinish.ldvelh.service.Impl;
 
 import com.nofinish.ldvelh.model.Chapter;
-import com.nofinish.ldvelh.repo.ChapterRepo;
+import com.nofinish.ldvelh.repository.ChapterRepo;
 import com.nofinish.ldvelh.service.ChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Service

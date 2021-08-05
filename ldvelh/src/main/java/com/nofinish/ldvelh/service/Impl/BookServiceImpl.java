@@ -1,7 +1,7 @@
 package com.nofinish.ldvelh.service.Impl;
 
 import com.nofinish.ldvelh.model.Book;
-import com.nofinish.ldvelh.repo.BookRepo;
+import com.nofinish.ldvelh.repository.BookRepo;
 import com.nofinish.ldvelh.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

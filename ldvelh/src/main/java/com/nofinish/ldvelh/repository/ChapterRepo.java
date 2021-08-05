@@ -1,4 +1,4 @@
-package com.nofinish.ldvelh.repo;
+package com.nofinish.ldvelh.repository;
 
 import com.nofinish.ldvelh.model.Chapter;
 import org.springframework.data.jpa.repository.JpaRepository;

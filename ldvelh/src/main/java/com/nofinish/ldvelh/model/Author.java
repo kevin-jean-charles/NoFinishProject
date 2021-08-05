@@ -19,5 +19,5 @@ public class Author extends Player {
 
     @OneToMany
     @JoinColumn(name = "author_book_id")
-    private Map<Long,Book> bookList;
+    private List<Book> bookList;
 }

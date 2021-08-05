@@ -12,15 +12,12 @@ import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:4200/")
 @Controller
-@RequestMapping("/books")
+@RequestMapping("/book")
 public class BookController {
 
     @Autowired
-    private final BookService bookService;
+    private BookService bookService;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @PostMapping("/add")
     public ResponseEntity<Book> createBook(@RequestBody Book book){
