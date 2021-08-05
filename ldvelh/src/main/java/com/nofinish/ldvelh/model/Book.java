@@ -1,12 +1,9 @@
 package com.nofinish.ldvelh.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
@@ -14,29 +11,21 @@ import java.util.Map;
 
 @Entity
 @Data
-//@NamedEntityGraph(name = "book.author", attributeNodes = @NamedAttributeNode("author"))
+@Table(name = "book")
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "hero_id")
+    private Long id;
 
+    @Column(name = "title")
     private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_Author", nullable = false)
-    private Author author;
+    @Column(name = "resume")
+    private String resume;
 
-
-
-    public Book() {
-        this("");
-    }
-
-    public Book(String title) {
-        this.title = title;
-
-    }
-
-
+    @OneToOne
+    @JoinColumn(name = "book_hero_id")
+    private Hero hero;
 }
