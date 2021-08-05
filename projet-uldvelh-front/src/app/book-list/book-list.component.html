@@ -1,6 +1,39 @@
 <div class="container">
-    <div class="row">   
+
+    <div *ngIf="books$ | async as books">
+        <div class="no-books" *ngIf="books.length == 0; else block">
+
+            <p>Aucun livre n'a été publié.</p>
+        </div>
+
+
+
+        <ng-template #block>
+
+    <div class="row">
         <h2 class="text-center text-white">Liste des livres</h2>
-        <app-book-item></app-book-item>
+        <div *ngFor="let book of books" class="card">
+            <img src="../../../assets/image/elfo.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{book?.title}} 
+                    <!-- <span>(Type)</span> -->
+                </h5>
+                <p class="card-text">{{book?.resume}} </p>
+                <button type="button" class="btn btn-warning">Dupliquer</button>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Date de création :</small>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Dernière modification :</small>
+            </div>
+            <button disabled type="button" class="btn btn-dark">
+                Déjà joué <span class="badge bg-secondary">4</span>
+            </button>
+        </div>
     </div>
+
+</ng-template>
+
+
 </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BookPayload } from '../add-book/book-payload';
+import { BookService } from '../service/book.service';
 
 @Component({
   selector: 'app-book-card',
@@ -6,10 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-card.component.scss']
 })
 export class BookCardComponent implements OnInit {
+ 
+  permaLink: any;
 
-  constructor() { }
+  book!: BookPayload;
 
-  ngOnInit(): void {
+  constructor(private router: ActivatedRoute, private bookService: BookService) { }
+
+  ngOnInit() {
+    this.router.params.subscribe(params => {
+      this.permaLink = params['id'];
+    });
+
+    this.bookService.getBook(this.permaLink).subscribe((data:BookPayload) => {
+      this.book = data;
+    },(err: any) => {
+      console.log('Failure Response');
+    })
+
   }
 
 }
