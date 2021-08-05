@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
 import { BookPayload } from '../add-book/book-payload';
-import { BookService } from '../service/book.service';
 
 
 @Component({
@@ -12,23 +11,20 @@ import { BookService } from '../service/book.service';
 })
 export class BookCardComponent implements OnInit {
 
- 
-  permaLink: any;
+  
 
-  book!: BookPayload;
+  //interface
+  @Input() book?: BookPayload;
 
-  constructor(private router: ActivatedRoute, private bookService: BookService) { }
+  @Output() deleteBookById = new EventEmitter<any>();
 
-  ngOnInit() {
-    this.router.params.subscribe(params => {
-      this.permaLink = params['id'];
-    });
+  constructor() { }
 
-    this.bookService.getBook(this.permaLink).subscribe((data:BookPayload) => {
-      this.book = data;
-    },(err: any) => {
-      console.log('Failure Response');
-    })
+  ngOnInit() {}
 
+  deleteBook(id?: number){
+    this.deleteBookById.emit(id)
+    
+  }
 
 }

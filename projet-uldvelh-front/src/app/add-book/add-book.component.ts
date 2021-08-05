@@ -11,35 +11,30 @@ import { BookPayload } from './book-payload';
 })
 export class AddBookComponent implements OnInit {
 
-  addBookForm: FormGroup ;
-  bookPayload: BookPayload ;
+  addBookForm: FormGroup;
+  bookPayload!: BookPayload;
   title = new FormControl('');
 
   resume = new FormControl('');
 
-
   constructor(private bookService: BookService, private router: Router) {
-    this.addBookForm = new FormGroup({
-
-      title: this.title,
-      resume: this.resume
-    });
-    this.bookPayload = {
-      id: '',
-      title: '',
-      resume:''
-    }
-    
-    
+    this.addBookForm = new FormGroup({});
   }
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
+    this.addBookForm = new FormGroup({
+      title: new FormControl(''),
+      resume: new FormControl('')
+    });
   }
 
   addBook() {
     this.bookPayload.title = this.addBookForm.get('title')?.value;
     this.bookPayload.resume = this.addBookForm.get('resume')?.value;
-    
 
     this.bookService.createBook(this.bookPayload).subscribe(data => {
       this.router.navigateByUrl('/library-editor');
@@ -47,6 +42,6 @@ export class AddBookComponent implements OnInit {
     }, error => {
       console.log('Failure Response');
     })
- }
+  }
 
 }

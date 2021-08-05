@@ -1,7 +1,13 @@
 export class BookPayload{
-    id!: String;
-    title!: String;
 
-    resume!: String;
+  constructor(
+
+    public id: number,
+    public title: string,
+    public resume: string
+    
+  ) {}
+
+   
 
   }
