@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
 
 import com.nofinish.ldvelh.model.EnumRole;
 import com.nofinish.ldvelh.model.Role;
@@ -18,6 +17,7 @@ import com.nofinish.ldvelh.repo.RoleRepo;
 import com.nofinish.ldvelh.repo.UserRepo;
 import com.nofinish.ldvelh.security.jwt.JwtUtils;
 import com.nofinish.ldvelh.security.service.UserDetailsImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,13 +25,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 
 
 @CrossOrigin(origins = "*")
@@ -109,7 +109,7 @@ public class AuthController {
             });
         }
 
-        user.setRole(roles);
+        user.setRoles(roles);
         userRepo.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
