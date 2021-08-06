@@ -9,22 +9,28 @@ import { BookPayload } from '../add-book/book-payload';
   providedIn: 'root'
 })
 export class BookService {
-  
-
+  baseUrl = "http://localhost:8080/api/books";
   constructor(private httpClient: HttpClient) { }
 
-
   createBook(bookPayload: BookPayload){
-    return this.httpClient.post('http://localhost:8080/api/books', bookPayload);
+    return this.httpClient.post(`${this.baseUrl}`, bookPayload);
   }
 
   getAllBooks(): Observable<Array<BookPayload>>{
-    return this.httpClient.get<Array<BookPayload>>("http://localhost:8080/api/books");
+    return this.httpClient.get<Array<BookPayload>>(`${this.baseUrl}`);
   }
 
-  getBook(permaLink: Number):Observable<BookPayload>{
-    return this.httpClient.get<BookPayload>('http://localhoast/8080/api/books/' + permaLink)
+  getBookById(idBook: number){
+    return this.httpClient.get<BookPayload>(`${this.baseUrl}/${idBook}`)
+  }
 
+  updateBook(book:BookPayload){
+    return this.httpClient.put(`${this.baseUrl}/${book.id}`, book);
+  }
+
+  deleteBook(idBook: number): Observable<BookPayload> {
+    return this.httpClient.delete<BookPayload>(`${this.baseUrl}/${idBook}`)
 
   }
+
 }

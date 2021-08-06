@@ -1,49 +1,22 @@
+
 <div class="container">
     <div class="row">
         <h2 class="text-center text-white">Ma bibliothèque</h2>
-
-
-
-
-        <div *ngIf="books$ | async as books">
-            <div class="no-article" *ngIf="books.length == 0; else block">
-
-                <p>Vous n'avez publié aucun article sur le blog !</p>
-            </div>
-
-            <ng-template #block>
-
-                <div *ngFor="let books of books" class="card">
-                    <img src="../../assets/image/elfo.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="books/{{books.id}}"> {{books?.title}} </a><span>(Type)</span></h5>
-                        <p class="card-text">{{books?.resume}}</p>
-                        <div class="group-btn-editor">
-                            <button type="button" class="btn btn-primary">Tester</button>
-                            <button type="button" class="btn btn-success">Publier</button>
-                            <button type="button" class="btn btn-danger">Supprimer</button>
-                            <button type="button" class="btn btn-warning">Dupliquer</button>
-                            <button type="button" class="btn btn-info">Modifier</button>
-                        </div>
-                        <div class="group-btn-editor">
-                            <button type="button" class="btn btn-warning">Jouer</button>
-                            <button type="button" class="btn btn-warning">Recommencer</button>
-                            <button type="button" class="btn btn-success">Reprendre</button>
-                            <button type="button" class="btn btn-danger">Supprimer</button>
-                        </div>
-                    </div>
-                    <div class="card-footer player">
-                        <small class="text-muted">Dernière connexion :</small>
-                    </div>
-                    <div class="card-footer user">
-                        <small class="text-muted">Dernière modification :</small><br>
-                        <small class="text-muted">Date de création :</small>
-                    </div>
-                </div>
-
-            </ng-template>
-
+        <div *ngIf="isDeleted">
+            <p class="text-success">Le livre a bien été supprimé!</p>
         </div>
+        <div class="card"> 
+          <app-book-card *ngFor="let book of books" [book]="book" (deleteBookById) = "deleteBook($event)" ></app-book-card>
+        </div>
+
+        <!-- <div *ngFor="let book of books" *ngIf="books.length === 0">
+            <div class="no-article">
+                <p>Vous n'avez publié aucun article sur le blog !</p>
+            </div> -->
+<!-- 
+            <ng-template #block>
+            </ng-template> -->
+
+        <!-- </div> -->
     </div>
 </div>
-

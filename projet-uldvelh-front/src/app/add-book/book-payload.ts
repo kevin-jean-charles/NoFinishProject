@@ -1,7 +1,10 @@
-export class BookPayload{
-    id!: String;
-    title!: String;
+import { ChapterPayload } from "../add-chapter/chapter-payload";
 
-    resume!: String;
+export class BookPayload {
+  constructor(public id: number,
+    public title: string,
+    public resume: string,
+    public chapters: ChapterPayload[]
+  ) {}
 
-  }
+}
