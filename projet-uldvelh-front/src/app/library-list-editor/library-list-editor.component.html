@@ -1,25 +1,22 @@
+
 <div class="container">
     <div class="row">
         <h2 class="text-center text-white">Ma bibliothèque</h2>
-
-
-
-
-        <div *ngIf="books$ | async as books">
-            <div class="no-article" *ngIf="books.length == 0; else block">
-
-                <p>Vous n'avez publié aucun article sur le blog !</p>
-            </div>
-
-            <ng-template #block>
-
-                <div *ngFor="let book of books" class="card">
-                  <app-book-card ></app-book-card>
-                </div>
-
-            </ng-template>
-
+        <div *ngIf="isDeleted">
+            <p class="text-success">Le livre a bien été supprimé!</p>
         </div>
+        <div class="card"> 
+          <app-book-card *ngFor="let book of books" [book]="book" (deleteBookById) = "deleteBook($event)" ></app-book-card>
+        </div>
+
+        <!-- <div *ngFor="let book of books" *ngIf="books.length === 0">
+            <div class="no-article">
+                <p>Vous n'avez publié aucun article sur le blog !</p>
+            </div> -->
+<!-- 
+            <ng-template #block>
+            </ng-template> -->
+
+        <!-- </div> -->
     </div>
 </div>
-

@@ -1,0 +1,31 @@
+<h2>Inscrivez-vous</h2>
+                <form
+                (ngSubmit)="onSubmit()" 
+                [formGroup]="signupForm" 
+                >
+                <div class="form-content">
+                    <label for="username">Entrez votre pseudonyme</label>
+                    <input 
+                    type="username" 
+                    d="username" 
+                    class="login-input"
+                    formControlName="username">
+                </div>
+                <div class="form-content">
+                    <label for="email">Entrez votre email</label>
+                    <input 
+                    type="text" 
+                    id="email" 
+                    class="login-input"
+                    formControlName="email">
+                </div>
+                    <div class="form-content">
+                        <label for="password">Choisissez un mot de passe</label>
+                        <input 
+                     
+                        id="password" 
+                        class="login-input"
+                        formControlName="password">
+                    </div>
+                    <button type="submit" id="login-button">Valider</button>
+                </form>

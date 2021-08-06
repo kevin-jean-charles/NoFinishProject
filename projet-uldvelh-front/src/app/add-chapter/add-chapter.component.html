@@ -1,0 +1,19 @@
+<div class="add-post-content">
+  <div class="container">
+    <div>
+      <h3 class="new-post-title">Créer un nouveau livre</h3>
+    </div>
+    <hr>
+
+    <form [formGroup]="addChapterForm" (ngSubmit)="createChapter()">
+
+      <div class="form-group">
+        <label class="post-text">Text</label>
+        <input type="text" formControlName="text" class="form-control" placeholder="Text">
+      </div>
+
+      <button class="btn btn-primary">Valider</button>
+    </form>
+  </div>
+
+</div>

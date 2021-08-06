@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule } from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -21,6 +21,12 @@ import { LibraryListEditorComponent } from './library-list-editor/library-list-e
 import { AddBookComponent } from './add-book/add-book.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { LibraryListEditorItemComponent } from './library-list-editor/library-list-editor-item/library-list-editor-item.component';
+import { UpdateBookComponent } from './update-book/update-book.component';
+import { AddChapterComponent } from './add-chapter/add-chapter.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 
 @NgModule({
@@ -41,7 +47,12 @@ import { RouterModule } from '@angular/router';
     EditorListComponent,
     EditorDetailsComponent,
     LibraryListEditorComponent,
-    AddBookComponent
+    AddBookComponent,
+    LibraryListEditorItemComponent,
+    UpdateBookComponent,
+    AddChapterComponent,
+    SignUpComponent,
+    SignInComponent
 
   ],
   imports: [
@@ -51,11 +62,9 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    // NgxWebstorageModule.forRoot(),
-
-
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
