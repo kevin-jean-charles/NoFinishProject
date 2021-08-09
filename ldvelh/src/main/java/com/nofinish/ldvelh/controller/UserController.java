@@ -6,7 +6,7 @@ import com.nofinish.ldvelh.service.UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin(origins = "http://localhost:4200/")
 @Data
 @RestController
 @RequestMapping("/api/users")
@@ -23,7 +23,7 @@ public class UserController {
     @GetMapping("/{id}")
     public User user(@PathVariable long id) { return  userService.getUserById(id);}
 
-    @PostMapping("/{id}/recipe")
+    @PostMapping("/{id}/book")
     public User addUserInRecipe(@PathVariable("id") Long id, @RequestBody Book book) {
         return userService.addUserInBook(id, book);
     }
