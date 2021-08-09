@@ -48,7 +48,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     UpdateBookComponent,
     AddChapterComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
 
   ],
   imports: [

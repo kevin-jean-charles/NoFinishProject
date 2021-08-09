@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators'
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { map } from 'rxjs/operators'
 export class AuthService {
   dev = false;
   URL_DEV = 'http://locahost:3000/api';
-  URL_TEST = 'http://localhost:8082/api';
+  URL_TEST = `${environment.baseUrl}`;
   API_URL: string
 
   constructor(private http: HttpClient,
@@ -37,13 +38,18 @@ export class AuthService {
       .pipe(
         map(
           (resp: any) => {
-            localStorage.setItem('TOKEN_APPLI', resp.token);
-            localStorage.setItem('USER_ID', resp.userId);
+            localStorage.setItem('TOKEN_APPLI', resp.accessToken);
+            localStorage.setItem('USER_ID', resp.id);
             console.log('Token Save');
             return resp;
           }
         )
       );
+  }
+
+
+  getUserId(): any {
+    return localStorage.getItem('USER_ID') || 0;
   }
 
   logout() {

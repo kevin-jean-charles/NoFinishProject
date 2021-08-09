@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { ChapterPayload } from '../add-chapter/chapter-payload';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { ChapterPayload } from '../add-chapter/chapter-payload';
 })
 export class ChapterService {
 
-  baseUrl= "http://localhost:8082/api/chapter";
+  baseUrl = `${environment.baseUrl}`;
   
   constructor(private httpClient: HttpClient) { }
 

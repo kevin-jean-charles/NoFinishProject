@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BookService } from '../service/book.service';
 import { BookPayload } from '../model/book-payload';
+import { AuthService } from '../service/auth.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-add-book',
@@ -14,27 +16,35 @@ export class AddBookComponent implements OnInit {
 
   addBookForm: FormGroup;
   bookPayload!: BookPayload;
-  sub? : Subscription;
+  sub?: Subscription;
+  currentUser?: any;
+  currentUserId?: any;
+  bookList?: BookPayload[];
+  newBook?: BookPayload;
 
-  constructor(private bookService: BookService, private router: Router) {
+  constructor(private bookService: BookService, private router: Router, private authService: AuthService, private userService: UserService) {
     this.addBookForm = new FormGroup({});
 
-    this.bookPayload = {
-      id : 1,
-      title: '',
-      resume: '',
-      chapters: [],
-      user: {
-         username: '',
-         email: '',
-         password:'',
-         roles:[]
-       },
-    }
+    // this.bookPayload = {
+    //   id : 1,
+    //   title: '',
+    //   resume: '',
+    //   chapters: [],
+    //   user: {
+    //      username: '',
+    //      email: '',
+    //      password:'',
+    //      roles:[]
+    //    },
+    // }
   }
 
   ngOnInit() {
     this.initForm();
+    //this.getUser();
+    this.currentUserId = parseInt(this.authService.getUserId());
+    console.log(this.currentUserId);
+    
   }
 
   initForm() {
@@ -45,10 +55,25 @@ export class AddBookComponent implements OnInit {
     console.log(this.addBookForm);
   }
 
-  createBook():void {
-      this.bookPayload.title = this.addBookForm.get('title')?.value;
-      this.bookPayload.resume = this.addBookForm.get('resume')?.value;
-      this.sub = this.bookService.createBook(this.bookPayload).subscribe(data => {
+  // getUser() {
+  //   console.log('Ok papa');
+    
+  //   console.log(this.currentUserId);
+  //   this.userService.getUserById(this.currentUserId);
+  //   console.log(this.userService.getUserById(this.currentUserId).subscribe(resp=> console.log(resp)));
+    
+  // }
+
+  createBook(): void {
+    this.newBook = {
+      title: this.addBookForm.value.title,
+      resume: this.addBookForm.value.resume
+    }
+    this.sub = this.bookService.createBook(this.newBook).subscribe(data => {
+        console.log(data);
+        this.userService.addUserInBook(this.currentUserId, data).subscribe(resp => {
+          console.log('Recette ajouté à la liste de l\'utilisateur');
+        })
         this.router.navigateByUrl('/library-editor');
       }, error => {
         console.log('Failure Response');

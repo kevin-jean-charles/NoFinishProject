@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { BookPayload } from '../model/book-payload';
 
@@ -9,7 +10,7 @@ import { BookPayload } from '../model/book-payload';
   providedIn: 'root'
 })
 export class BookService {
-  baseUrl = "http://localhost:8082/api/books";
+  baseUrl = `${environment.baseUrl}`;
   constructor(private httpClient: HttpClient) { }
 
   createBook(bookPayload: BookPayload){
