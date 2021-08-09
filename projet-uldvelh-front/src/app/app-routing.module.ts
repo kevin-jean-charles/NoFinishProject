@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddBookComponent } from './add-book/add-book.component';
 import { AddChapterComponent } from './add-chapter/add-chapter.component';
-import { BookListComponent } from './book-list/book-list.component';
 import { EditorListComponent } from './editor/editor-list/editor-list.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LayoutComponent } from './layout/layout.component';
@@ -24,7 +23,6 @@ const routes: Routes = [
   { path: 'library-editor/:id', component: LibraryListEditorItemComponent},
   { path: 'library-editor', component: LibraryListEditorComponent },
   { path: 'editor-list', component: EditorListComponent },
-  { path: 'book-list', component: BookListComponent },
   { path: 'add-book', component: AddBookComponent },
   { path: 'update-book/:id', component: UpdateBookComponent },
   { path: 'add-chapter', component: AddChapterComponent}

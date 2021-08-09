@@ -52,13 +52,4 @@ export class AuthService {
     return localStorage.getItem('USER_ID') || 0;
   }
 
-  logout() {
-    localStorage.removeItem('TOKEN_APPLI');
-    this.router.navigate(['/signin']);
-  }
-
-  isAuthentificated() {
-    
-  }
-
 }

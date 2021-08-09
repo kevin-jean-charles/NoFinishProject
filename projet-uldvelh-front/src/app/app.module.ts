@@ -9,8 +9,6 @@ import { AboutComponent } from './about/about.component';
 import { OhFourComponent } from './oh-four/oh-four.component';
 import { LibraryListPlayerComponent } from './library-list-player/library-list-player.component';
 import { BookCardComponent } from './book-card/book-card.component';
-import { BookListComponent } from './book-list/book-list.component';
-import { BookItemComponent } from './book-list/book-item/book-item.component';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { EditorComponent } from './editor/editor.component';
 import { EditorListComponent } from './editor/editor-list/editor-list.component';
@@ -36,8 +34,6 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     OhFourComponent,
     LibraryListPlayerComponent,
     BookCardComponent,
-    BookListComponent,
-    BookItemComponent,
     NavBarComponent,
     EditorComponent,
     EditorListComponent,
