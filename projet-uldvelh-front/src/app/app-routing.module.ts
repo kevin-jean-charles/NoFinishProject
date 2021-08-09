@@ -19,7 +19,6 @@ const routes: Routes = [
   {path: 'signin', component : SignInComponent},
   {path: '', canActivate: [AuthGuard], component: LayoutComponent, children : [ 
 
-
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'library-player', component: LibraryListPlayerComponent },
   { path: 'library-editor/:id', component: LibraryListEditorItemComponent},

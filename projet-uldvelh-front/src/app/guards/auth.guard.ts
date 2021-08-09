@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       console.log('Pas de token, no guard');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/signup']);
       return false;
     }
   }
