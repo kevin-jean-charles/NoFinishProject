@@ -24,6 +24,9 @@ public class Book {
     @OneToMany
     private List<Chapter> listChapters;
 
+    @ManyToOne
+    private User user;
+
 
 
 
