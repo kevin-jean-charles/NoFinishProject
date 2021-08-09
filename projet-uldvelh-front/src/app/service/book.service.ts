@@ -14,23 +14,26 @@ export class BookService {
   constructor(private httpClient: HttpClient) { }
 
   createBook(bookPayload: BookPayload){
-    return this.httpClient.post(`${this.baseUrl}`, bookPayload);
+    return this.httpClient.post(`${this.baseUrl}/books`, bookPayload);
   }
 
   getAllBooks(): Observable<Array<BookPayload>>{
-    return this.httpClient.get<Array<BookPayload>>(`${this.baseUrl}`);
+    return this.httpClient.get<Array<BookPayload>>(`${this.baseUrl}/books`);
+  }
+  getBooksByUserId(idUser:number): Observable<Array<BookPayload>> {
+    return this.httpClient.get<Array<BookPayload>>(`${this.baseUrl}/books/${idUser}/user`);
   }
 
   getBookById(idBook: number){
-    return this.httpClient.get<BookPayload>(`${this.baseUrl}/${idBook}`)
+    return this.httpClient.get<BookPayload>(`${this.baseUrl}:books/${idBook}`)
   }
 
   updateBook(book:BookPayload){
-    return this.httpClient.put(`${this.baseUrl}/${book.id}`, book);
+    return this.httpClient.put(`${this.baseUrl}/${book.id}/books`, book);
   }
 
   deleteBook(idBook: number): Observable<BookPayload> {
-    return this.httpClient.delete<BookPayload>(`${this.baseUrl}/${idBook}`)
+    return this.httpClient.delete<BookPayload>(`${this.baseUrl}/books/${idBook}`)
 
   }
 

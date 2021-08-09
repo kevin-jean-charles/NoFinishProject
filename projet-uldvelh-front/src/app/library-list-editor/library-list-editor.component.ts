@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 import { BookPayload } from '../model/book-payload';
+import { AuthService } from '../service/auth.service';
 import { BookService } from '../service/book.service';
 
 @Component({
@@ -16,11 +17,13 @@ export class LibraryListEditorComponent implements OnInit {
   databooks?: BookPayload[];
   isDeleted: boolean = false;
   books?: BookPayload[];
+  currentUserId?: number;
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.bookSub= this.bookService.getAllBooks().subscribe(resp=>{
+    this.currentUserId = parseInt(this.authService.getUserId());
+    this.bookSub= this.bookService.getBooksByUserId(this.currentUserId).subscribe(resp=>{
       this.books = resp;
       console.log(this.books);
     })
