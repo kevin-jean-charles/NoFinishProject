@@ -18,4 +18,5 @@ public interface BookService {
 
     Book deleteChapterInBook(Long id, Long chapterId);
 
+    List<Book> findBooksByUserId(Long id);
 }

@@ -40,9 +40,9 @@ public class BookController {
         return bookService.addChapterToBook(id,chapter);
     }
 
-    @GetMapping("")
-    public ResponseEntity<List<Book>> getAllBooks() {
-        List<Book> listBooks = bookService.findAllBooks();
+    @GetMapping("/{id}/user")
+    public ResponseEntity<List<Book>> getBooksByUserId(@PathVariable("id") Long id) {
+        List<Book> listBooks = bookService.findBooksByUserId(id);
         return new ResponseEntity<>(listBooks, HttpStatus.OK);
     }
 

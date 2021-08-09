@@ -2,8 +2,10 @@ package com.nofinish.ldvelh.service.Impl;
 
 import com.nofinish.ldvelh.model.Book;
 import com.nofinish.ldvelh.model.Chapter;
+import com.nofinish.ldvelh.model.User;
 import com.nofinish.ldvelh.repo.BookRepo;
 import com.nofinish.ldvelh.repo.ChapterRepo;
+import com.nofinish.ldvelh.repo.UserRepo;
 import com.nofinish.ldvelh.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ public class BookServiceImpl implements BookService {
     private  BookRepo bookRepo;
     @Autowired
     private ChapterRepo chapterRepo;
+    @Autowired
+    private UserRepo userRepo;
 
     @Override
     public Book createOrUpdateBook(Book book) {
@@ -26,7 +30,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> findAllBooks() {
-        return  bookRepo.findAll();
+        return bookRepo.findAll();
     }
 
     @Override
@@ -73,5 +77,11 @@ public class BookServiceImpl implements BookService {
             }
         return updatedBook;
   }
+
+    @Override
+    public List<Book> findBooksByUserId(Long id) {
+        Optional<User> optionalUser = userRepo.findById(id);
+        return optionalUser.get().getBookList();
+    }
 
 }
