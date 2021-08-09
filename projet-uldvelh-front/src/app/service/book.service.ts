@@ -29,7 +29,7 @@ export class BookService {
   }
 
   updateBook(book:BookPayload){
-    return this.httpClient.put(`${this.baseUrl}/books/${book.id}/update`, book);
+    return this.httpClient.put(`${this.baseUrl}/books/${book.id}`, book);
   }
 
   deleteBook(idBook: number): Observable<BookPayload> {

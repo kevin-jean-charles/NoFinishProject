@@ -5,27 +5,24 @@
         <h5 class="card-title" routerLink="{{book?.id}}">{{book?.title}}<span>(Type)</span></h5>
         <p class="card-text">{{book?.resume}}</p>
         <p class="card-text" *ngFor="let chapter of book?.chapters">{{chapter}} </p>
-            <div class="group-btn-editor">
-                <!-- <button type="button" class="btn btn-primary">Tester</button>
-                <button type="button" class="btn btn-success">Publier</button> -->
+            <div class="group-btn-editor" *ngIf="isEditor">
+                <button type="button" class="btn btn-success">Publier</button>
                 <button (click)="deleteBook(book?.id)"  type="button" class="btn btn-danger">Supprimer</button>
-                <!-- <button type="button" class="btn btn-warning">Dupliquer</button> -->
-                <button type="button" class="btn btn-info" (click)="updateBook(book?.id)" >Modifier</button>
+                <button type="button" class="btn btn-warning" (click)="updateBook(book?.id)" >Modifier</button>
                 <button type="button" class="btn btn-info" routerLink="/add-chapter" >Ajouter un chapitre</button>
-
             </div>
-            <!-- <div class="group-btn-editor">
+            <div class="group-btn-player" *ngIf="!isEditor">
                 <button type="button" class="btn btn-warning">Jouer</button>
                 <button type="button" class="btn btn-warning">Recommencer</button>
                 <button type="button" class="btn btn-success">Reprendre</button>
                 <button type="button" class="btn btn-danger">Supprimer</button>
-            </div> -->
+            </div>
     </div>
-        <div class="card-footer player">
+        <!-- <div class="card-footer player">
             <small class="text-muted">Dernière connexion :</small>
         </div>
         <div class="card-footer user">
             <small class="text-muted">Dernière modification :</small><br>
             <small class="text-muted">Date de création :</small>
-        </div>
+        </div> -->
 </div>
