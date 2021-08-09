@@ -25,11 +25,11 @@ export class BookService {
   }
 
   getBookById(idBook: number){
-    return this.httpClient.get<BookPayload>(`${this.baseUrl}:books/${idBook}`)
+    return this.httpClient.get<BookPayload>(`${this.baseUrl}/books/${idBook}`)
   }
 
   updateBook(book:BookPayload){
-    return this.httpClient.put(`${this.baseUrl}/${book.id}/books`, book);
+    return this.httpClient.put(`${this.baseUrl}/books/${book.id}/update`, book);
   }
 
   deleteBook(idBook: number): Observable<BookPayload> {

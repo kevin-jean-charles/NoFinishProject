@@ -13,31 +13,31 @@ import { BookService } from '../service/book.service';
 export class UpdateBookComponent implements OnInit {
 
   updateBookForm: FormGroup;
-  //bookPayload: BookPayload;
-  id!: number;
-  bookSub?:Subscription;
+  book?: BookPayload;
+  id?: number;
+  bookSub?: Subscription;
+
 
   constructor(private bookService: BookService, private route: ActivatedRoute) {
     this.updateBookForm = new FormGroup({});
   }
 
   ngOnInit(): void {
-    // this.initForm();
-    // this.route.params.subscribe((params: Params) => {
-    //   this.id = +params['id'];
-    //   console.log(this.id);
+    this.initForm();
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      console.log(this.id);
       
-    //   this.bookService.getBookById(this.id).subscribe(book => { 
-    //     this.id = book.id;
-    //     console.log(book);
+      this.bookService.getBookById(this.id).subscribe(book => { 
+        this.id = book.id;
+        console.log(book);
 
-    //     this.updateBookForm.setValue({
-    //       title: book.title,
-    //       resume: book.resume,
-    //       chapters: book.chapters,
-    //     })
-    //   })
-    // })
+        this.updateBookForm.setValue({
+          title: book.title,
+          resume: book.resume,
+        })
+      })
+    })
   }
 
   initForm() {
@@ -48,18 +48,14 @@ export class UpdateBookComponent implements OnInit {
   }
 
   updateBook() {
-
-    const formValues = {
-      id:this.id,
+    this.book = {
+      id: this.id,
       title: this.updateBookForm.value.title,
       resume: this.updateBookForm.value.resume,
-      chapters: this.updateBookForm.value.chapters,
-      user: this.updateBookForm.value.user
-    }
-    console.log(formValues);
-  
+      chapters: []
+} 
     
-    this.bookService.updateBook(formValues).subscribe(
+    this.bookService.updateBook(this.book).subscribe(
       resp => {
         console.log("modification effectuée")
         console.log(this.id)
