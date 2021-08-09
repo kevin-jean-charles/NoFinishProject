@@ -24,7 +24,7 @@ public class UserController {
     public User user(@PathVariable long id) { return  userService.getUserById(id);}
 
     @PostMapping("/{id}/book")
-    public User addUserInRecipe(@PathVariable("id") Long id, @RequestBody Book book) {
+    public User addUserInBook(@PathVariable("id") Long id, @RequestBody Book book) {
         return userService.addUserInBook(id, book);
     }
 
