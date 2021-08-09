@@ -2,6 +2,7 @@ package com.nofinish.ldvelh.model;
 
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -48,6 +49,9 @@ public class User {
         this.password = password;
     }
 
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.PERSIST)
+    private List<Book> bookList;
+
     public Long getId() {
         return id;
     }
@@ -88,5 +92,11 @@ public class User {
         this.roles = roles;
     }
 
+    public List<Book> getBookList() {
+        return bookList;
+    }
 
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
+    }
 }

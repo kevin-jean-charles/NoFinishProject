@@ -11,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Data
-//@NamedEntityGraph(name = "book.author", attributeNodes = @NamedAttributeNode("author"))
 public class Book {
 
     @Id
@@ -24,8 +23,6 @@ public class Book {
     @OneToMany
     private List<Chapter> listChapters;
 
-    @ManyToOne
-    private User user;
 
 
 

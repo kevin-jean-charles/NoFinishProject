@@ -14,6 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Entity
+@Table(name = "chapter")
 public class Chapter {
 
     @Id
@@ -27,7 +28,7 @@ public class Chapter {
     private boolean end;
     private  String optionName;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Chapter> listOptions;
 
 
