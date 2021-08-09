@@ -97,15 +97,24 @@ public class AuthController {
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role userRole = roleRepo.findByName(EnumRole.PLAYER)
+            Role userRole = roleRepo.findByName(EnumRole.USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
+                switch (role) {
+                    case "admin":
+                        Role adminRole = roleRepo.findByName(EnumRole.ADMIN)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(adminRole);
 
-                Role authorRole = roleRepo.findByName(EnumRole.AUTHOR)
-                        .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                roles.add(authorRole);
+                        break;
+
+                    default:
+                        Role userRole = roleRepo.findByName(EnumRole.USER)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(userRole);
+                }
             });
         }
 
