@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators'
 export class AuthService {
   dev = false;
   URL_DEV = 'http://locahost:3000/api';
-  URL_TEST = 'http://localhost:8080/api';
+  URL_TEST = 'http://localhost:8082/api';
   API_URL: string
 
   constructor(private http: HttpClient,

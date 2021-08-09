@@ -3,7 +3,7 @@ import { Component, OnInit, Output } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { BookPayload } from '../add-book/book-payload';
+import { BookPayload } from '../model/book-payload';
 import { BookService } from '../service/book.service';
 
 

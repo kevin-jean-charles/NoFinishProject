@@ -7,8 +7,6 @@ import { LayoutComponent } from './layout/layout.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { OhFourComponent } from './oh-four/oh-four.component';
-import { LoginComponent } from './login/login.component';
-import { InscriptionComponent } from './inscription/inscription.component';
 import { LibraryListPlayerComponent } from './library-list-player/library-list-player.component';
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookListComponent } from './book-list/book-list.component';
@@ -36,8 +34,6 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     FooterComponent,
     AboutComponent,
     OhFourComponent,
-    LoginComponent,
-    InscriptionComponent,
     LibraryListPlayerComponent,
     BookCardComponent,
     BookListComponent,

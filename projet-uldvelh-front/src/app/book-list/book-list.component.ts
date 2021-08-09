@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { BookPayload } from '../add-book/book-payload';
+import { BookPayload } from '../model/book-payload';
 import { BookService } from '../service/book.service';
 
 

@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BookService } from '../service/book.service';
-import { BookPayload } from './book-payload';
+import { BookPayload } from '../model/book-payload';
 
 @Component({
   selector: 'app-add-book',
@@ -20,10 +20,16 @@ export class AddBookComponent implements OnInit {
     this.addBookForm = new FormGroup({});
 
     this.bookPayload = {
-      id : 0,
+      id : 1,
       title: '',
       resume: '',
-      chapters: []
+      chapters: [],
+      user: {
+         username: '',
+         email: '',
+         password:'',
+         roles:[]
+       },
     }
   }
 

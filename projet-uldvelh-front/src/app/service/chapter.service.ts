@@ -8,7 +8,7 @@ import { ChapterPayload } from '../add-chapter/chapter-payload';
 })
 export class ChapterService {
 
-  baseUrl= "http://localhost:8080/api/chapter";
+  baseUrl= "http://localhost:8082/api/chapter";
   
   constructor(private httpClient: HttpClient) { }
 

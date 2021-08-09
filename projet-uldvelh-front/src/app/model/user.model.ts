@@ -1,17 +1,11 @@
-import { Injectable } from "@angular/core";
 
-@Injectable({
-    providedIn: 'root'
-})
+export interface User {
 
-export class User {
+    id?: number,
+    username?: string,
+    email?: string,
+    password?: string,
+    roles?: string []
 
-    constructor(
-        public id_user: number,
-        public username: string,
-        public email: string,
-        public password: string,
-        public roles: string []
-) {
-    }
 }
+

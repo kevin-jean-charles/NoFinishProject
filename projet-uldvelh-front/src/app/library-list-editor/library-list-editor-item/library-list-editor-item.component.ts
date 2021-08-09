@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { BookPayload } from 'src/app/add-book/book-payload';
+import { BookPayload } from 'src/app/model/book-payload';
 import { BookService } from 'src/app/service/book.service';
 
 @Component({

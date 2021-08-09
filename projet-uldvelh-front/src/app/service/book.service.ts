@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { BookPayload } from '../add-book/book-payload';
+import { BookPayload } from '../model/book-payload';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  baseUrl = "http://localhost:8080/api/books";
+  baseUrl = "http://localhost:8082/api/books";
   constructor(private httpClient: HttpClient) { }
 
   createBook(bookPayload: BookPayload){

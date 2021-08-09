@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { BookPayload } from '../add-book/book-payload';
+import { BookPayload } from '../model/book-payload';
 import { BookService } from '../service/book.service';
 
 @Component({
@@ -34,7 +34,8 @@ export class UpdateBookComponent implements OnInit {
         this.updateBookForm.setValue({
           title: book.title,
           resume: book.resume,
-          chapters: book.chapters
+          chapters: book.chapters,
+          user: book.user
         })
       })
     })
@@ -53,7 +54,8 @@ export class UpdateBookComponent implements OnInit {
       id:this.id,
       title: this.updateBookForm.value.title,
       resume: this.updateBookForm.value.resume,
-      chapters: this.updateBookForm.value.chapters
+      chapters: this.updateBookForm.value.chapters,
+      user: this.updateBookForm.value.user
     }
     console.log(formValues);
   
