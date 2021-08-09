@@ -6,7 +6,7 @@ import com.nofinish.ldvelh.service.UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin
 @Data
 @RestController
 @RequestMapping("/api/users")
