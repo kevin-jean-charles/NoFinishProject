@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators'
 import { environment } from 'src/environments/environment';
+import { LocalStorageService } from 'ngx-webstorage';
+
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +51,19 @@ export class AuthService {
 
 
   getUserId(): any {
-    return localStorage.getItem('USER_ID') || 0;
+    return localStorage.getItem('TOKEN_APPLI') || 0;
+  }
+
+  logout() {
+    localStorage.removeItem('TOKEN_APPLI');
+    localStorage.removeItem('USER_ID');
+    this.router.navigate(['/signin']);
+  }
+
+ isAuthenticated(): Boolean{
+   console.log("ok auth")
+    return localStorage.getItem('USER_ID') != null;
+
   }
 
 }
