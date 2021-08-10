@@ -57,9 +57,18 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void deleteBookById(Long id) {
-        bookRepo.deleteById(id);
-
+    public void deleteBookById(Long id, Long UserId) {
+        Optional<Book> currentBook = bookRepo.findById(id);
+        Optional<User> userOptional = userRepo.findById(UserId);
+        Book deletedBook = null;
+        User user = null;
+        if(currentBook.isPresent()&&userOptional.isPresent()) {
+            deletedBook = currentBook.get();
+            user = userOptional.get();
+            user.getBookList().remove(deletedBook);
+            bookRepo.delete(deletedBook);
+            userRepo.save(user);
+        }
     }
 
     @Override

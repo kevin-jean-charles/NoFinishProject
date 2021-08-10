@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User addUserInBook(Long id, Book book) {
         Optional<User> userOptional = userRepo.findById(id);
-        Optional<Book> recipeOptional = bookRepo.findById(id);
+        //Optional<Book> recipeOptional = bookRepo.findById(id);
         User user =null;
         if (userOptional.isPresent()) {
             user = userOptional.get();

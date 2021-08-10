@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
 @CrossOrigin
 @Controller
 @RequestMapping("/api/books")
@@ -27,6 +26,12 @@ public class BookController {
     public BookController(BookService bookService, ChapterService chapterService) {
         this.bookService = bookService;
         this.chapterService = chapterService;
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<Book>> getAllBooks() {
+        List<Book> listBooks = bookService.findAllBooks();
+        return new ResponseEntity<>(listBooks, HttpStatus.OK);
     }
 
     @PostMapping("")
@@ -59,9 +64,9 @@ public class BookController {
         return new ResponseEntity<>(updatedBook, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Book> deleteBook(@PathVariable Long id){
-        bookService.deleteBookById(id);
+    @DeleteMapping("/{id}/user/{userId}")
+    public ResponseEntity<Book> deleteBookInUserList(@PathVariable("id") Long id,@PathVariable("userId") Long UserId ){
+        bookService.deleteBookById(id, UserId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @DeleteMapping("/{id}/{chapterId}")
