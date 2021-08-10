@@ -1,28 +1,17 @@
-<h2>Connectez-vous</h2>
-<form
-(ngSubmit)='onSubmit(loginForm)'
-#loginForm='ngForm'
-class="login-form">
-    <div class="mb-3">
-        <input 
-        type="username" 
-        id="username" 
-        placeholder="Votre pseudonyme" 
-        class="login-input"
-        name="username"
-        ngModel
-        required>
-    </div>
-    <div class="mb-3">
-        <input 
-      
-        id="password" 
-        placeholder="Votre mot de passe" 
-        class="login-input"
-        name="password"
-        ngModel
-        required>
-    </div>
-    
-    <button class="btn btn-primary" type="submit" id="login-button">Valider</button>
-</form>
+<div class="container">
+    <h2>Connectez-vous</h2>
+    <form (ngSubmit)='onSubmit(loginForm)' #loginForm='ngForm' class="login-form">
+        <div class="mb-3">
+            <label for="username" class="me3"> Entrez votre pseudonyme </label>
+            <input type="username" id="username" class="login-input" name="username" ngModel required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="me3">Entrez votre mot de passe </label>
+            <input id="password" class="login-input" name="password" ngModel required>
+        </div>
+
+            <button class="btn btn-primary" type="submit" id="login-button">Valider</button>
+            <button class="btn btn-primary" type="submit" id="login-button" routerLink="/signup">Inscription</button>
+
+    </form>
+</div>
