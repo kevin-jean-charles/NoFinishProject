@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -9,27 +10,38 @@
           <a class="nav-link active" aria-current="page" href="#">Accueil</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Jouer
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" [routerLink]="['/library-player']" routerLinkActive="active-orange" >Ma bibliothèque</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/editor-list']" routerLinkActive="active-orange">Liste des créateurs</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/book-list']" routerLinkActive="active-orange">Liste des livres</a></li> 
+            <li><a class="dropdown-item" [routerLink]="['/library-player']" routerLinkActive="active-orange">Ma
+                bibliothèque</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/editor-list']" routerLinkActive="active-orange">Liste des
+                créateurs</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/book-list']" routerLinkActive="active-orange">Liste des
+                livres</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Editer
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" [routerLink]="['/library-editor']" routerLinkActive="active-orange">Ma bibliothèque</a></li>
-            <li><a class="dropdown-item" [routerLink]="['add-book']" routerLinkActive="active-orange">Nouvelle histoire</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/library-editor']" routerLinkActive="active-orange">Ma
+                bibliothèque</a></li>
+            <li><a class="dropdown-item" [routerLink]="['add-book']" routerLinkActive="active-orange">Nouvelle
+                histoire</a></li>
           </ul>
-        </li>  
-        <li class="nav-item">
-          <a class="nav-link" (click)="logout()">Se déconnecter</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()" *ngIf="isAuthenticated()" routerLink="signin">Se déconnecter</a>
+        </li>
+      
+          <li class="nav-item"><a class="nav-link"  *ngIf="!isAuthenticated()" routerLink="signup">Connexion</a></li>
+              <!-- *ngIf="!authService.isAuthenticated()" -->
+      
       </ul>
     </div>
   </div>
