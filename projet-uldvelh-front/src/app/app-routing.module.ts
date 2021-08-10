@@ -14,10 +14,16 @@ import { UpdateBookComponent } from './update-book/update-book.component';
 //import { OhFourComponent } from './oh-four/oh-four.component';
 
 const routes: Routes = [
-  {path: 'signup', component : SignUpComponent},
-  {path: 'signin', component : SignInComponent},
-  {path: '', canActivate: [AuthGuard], component: LayoutComponent, children : [ 
 
+
+    
+  
+
+  {path: '', component: LayoutComponent, children : [ 
+        // {path: '', canActivate: [AuthGuard], component: LayoutComponent, children : [ 
+
+    {path: 'signup', component : SignUpComponent},
+    {path: 'signin', component : SignInComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'library-player', component: LibraryListPlayerComponent },
   { path: 'library-editor/:id', component: LibraryListEditorItemComponent},

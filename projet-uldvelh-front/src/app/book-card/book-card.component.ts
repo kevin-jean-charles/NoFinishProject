@@ -16,15 +16,16 @@ export class BookCardComponent implements OnInit {
 
   //interface
   @Input() book?: BookPayload;
+  @Input() isEditor: boolean = true;
 
   @Output() deleteBookById = new EventEmitter<any>();
   @Output() updateBookById = new EventEmitter<any>();
-  isEditor: boolean = false;
+ 
 
   constructor(private router: Router, private bookService: BookService) { }
 
   ngOnInit() {
-    this.isEditor = true;
+  
   }
 
   deleteBook(id?: number){
