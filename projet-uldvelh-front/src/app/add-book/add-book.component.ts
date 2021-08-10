@@ -51,16 +51,13 @@ export class AddBookComponent implements OnInit {
     this.bookService.createBook(this.newBook).subscribe(data => {
         console.log(data);
         this.userService.addUserInBook(this.currentUserId, data).subscribe(resp => {
-
-          console.log('Histoire ajoutée à la liste de l\'utilisateur');
-
-        
-          this.bookService.getAllBooks();
-
+          console.log('Histoire ajouté à la liste de l\'utilisateur');
+          this.bookService.getBooksByUserId(this.currentUserId);
         })
         this.router.navigate(['/library-editor']);
       }, error => {
         console.log('Failure Response');
       })
-  }
+  } 
+  
 }

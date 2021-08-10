@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BookPayload } from '../model/book-payload';
 import { BookService } from '../service/book.service';
@@ -18,7 +18,7 @@ export class UpdateBookComponent implements OnInit {
   bookSub?: Subscription;
 
 
-  constructor(private bookService: BookService, private route: ActivatedRoute) {
+  constructor(private bookService: BookService, private route: ActivatedRoute, private router: Router ) {
     this.updateBookForm = new FormGroup({});
   }
 
@@ -57,6 +57,7 @@ export class UpdateBookComponent implements OnInit {
     
     this.bookService.updateBook(this.book).subscribe(
       resp => {
+        this.router.navigate(['/library-editor']);
         console.log("modification effectuée")
         console.log(this.id)
       }

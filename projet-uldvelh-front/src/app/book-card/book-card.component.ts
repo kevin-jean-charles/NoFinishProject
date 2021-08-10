@@ -14,7 +14,6 @@ import { BookService } from '../service/book.service';
 })
 export class BookCardComponent implements OnInit {
 
-  //interface
   @Input() book?: BookPayload;
   @Input() isEditor: boolean = true;
 

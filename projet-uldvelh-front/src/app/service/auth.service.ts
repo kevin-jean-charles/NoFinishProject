@@ -13,7 +13,8 @@ export class AuthService {
   dev = false;
   URL_DEV = 'http://locahost:3000/api';
   URL_TEST = `${environment.baseUrl}`;
-  API_URL: string
+  API_URL: string;
+  // private jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient,
     private router: Router
@@ -51,7 +52,7 @@ export class AuthService {
 
 
   getUserId(): any {
-    return localStorage.getItem('TOKEN_APPLI') || 0;
+    return localStorage.getItem('USER_ID') || 0;
   }
 
   logout() {
@@ -60,10 +61,25 @@ export class AuthService {
     this.router.navigate(['/signin']);
   }
 
- isAuthenticated(): Boolean{
-   console.log("ok auth")
+  isAuthenticated(): Boolean{
     return localStorage.getItem('USER_ID') != null;
 
   }
+
+  getToken() {
+    return localStorage.getItem('TOKEN_APPLI');
+  }
+
+  // getJwtToken() {
+  //   const token: any = this.getToken();
+  //   const decode = this.jwtHelper.decodeToken(token);
+  //   if (decode != null && decode.id != null && decode.sub != null) {
+  //     if (!this.jwtHelper.isTokenExpired) {
+  //       return { ...decode, token };
+  //     } else {
+  //       localStorage.removeItem('TOKEN_APPLI')
+  //     }
+  //   }
+  // }
 
 }

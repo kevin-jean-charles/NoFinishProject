@@ -23,13 +23,10 @@ export class LibraryListEditorComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentUserId = parseInt(this.authService.getUserId());
-    this.bookService.getBooksByUserId(this.currentUserId).subscribe(resp=>{
-      this.books = resp;
-      console.log(this.books);
-    })
     this.bookSub = this.bookService.bookSubject.subscribe(resp => {
       this.books = resp;
-})
+    })
+    this.bookService.getBooksByUserId(this.currentUserId);
   }
 
 
@@ -49,5 +46,5 @@ export class LibraryListEditorComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.bookSub?.unsubscribe();
-}
   }
+}

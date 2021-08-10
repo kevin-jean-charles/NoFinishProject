@@ -19,19 +19,18 @@ export class BookService {
     return this.httpClient.post(`${this.baseUrl}/books`, bookPayload);
   }
 
-  getBookList() {
-    this.httpClient.get<BookPayload[]>(`${this.baseUrl}/books`).subscribe(resp => {
-      this.bookSubject.next(resp);
-    })
-}
 
   getAllBooks(): Observable<Array<BookPayload>>{
     return this.httpClient.get<Array<BookPayload>>(`${this.baseUrl}/books`);
   }
-  getBooksByUserId(idUser:number): Observable<Array<BookPayload>> {
-    return this.httpClient.get<Array<BookPayload>>(`${this.baseUrl}/books/${idUser}/user`);
-  }
 
+  getBooksByUserId(idUser: number){
+    this.httpClient.get<Array<BookPayload>>(`${this.baseUrl}/books/${idUser}/user`).subscribe(resp => {
+      this.bookSubject.next(resp);
+      }
+    );
+  }
+  
   getBookById(idBook: number){
     return this.httpClient.get<BookPayload>(`${this.baseUrl}/books/${idBook}`)
   }
