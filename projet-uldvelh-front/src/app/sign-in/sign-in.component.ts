@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 
@@ -8,7 +8,10 @@ import { AuthService } from '../service/auth.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
+
 export class SignInComponent implements OnInit {
+
+  form?: FormGroup;
 
   constructor(private router: Router,
     private authService: AuthService) { }
