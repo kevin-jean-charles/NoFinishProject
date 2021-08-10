@@ -4,6 +4,7 @@ import { AddBookComponent } from './add-book/add-book.component';
 import { AddChapterComponent } from './add-chapter/add-chapter.component';
 import { EditorListComponent } from './editor/editor-list/editor-list.component';
 import { AuthGuard } from './guards/auth.guard';
+import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LibraryListEditorItemComponent } from './library-list-editor/library-list-editor-item/library-list-editor-item.component';
 import { LibraryListEditorComponent } from './library-list-editor/library-list-editor.component';
@@ -15,15 +16,15 @@ import { UpdateBookComponent } from './update-book/update-book.component';
 
 const routes: Routes = [
 
-
-    
-  
-
   {path: '', component: LayoutComponent, children : [ 
-        // {path: '', canActivate: [AuthGuard], component: LayoutComponent, children : [ 
-
-    {path: 'signup', component : SignUpComponent},
-    {path: 'signin', component : SignInComponent},
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'signup', component : SignUpComponent},
+  {path: 'signin', component : SignInComponent},
+  { path: 'home', component: HomeComponent},
+  
+  ]},
+        
+  {path: '', canActivate: [AuthGuard], component: LayoutComponent, children : [ 
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'library-player', component: LibraryListPlayerComponent },
   { path: 'library-editor/:id', component: LibraryListEditorItemComponent},
@@ -31,9 +32,8 @@ const routes: Routes = [
   { path: 'editor-list', component: EditorListComponent },
   { path: 'add-book', component: AddBookComponent },
   { path: 'update-book/:id', component: UpdateBookComponent },
-  { path: 'add-chapter', component: AddChapterComponent}
-
-
+  { path: 'add-chapter', component: AddChapterComponent},
+ 
   // { path: '**', redirectTo: '/not-found' },
   ]},
 ];

@@ -23,6 +23,7 @@ import { AddChapterComponent } from './add-chapter/add-chapter.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     AddChapterComponent,
     SignUpComponent,
     SignInComponent,
+    HomeComponent,
 
   ],
   imports: [
@@ -53,7 +55,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     HttpClientModule, 
     ReactiveFormsModule,
     FormsModule,
-    RouterModule,
+    RouterModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 ],
