@@ -16,6 +16,7 @@ export class UpdateBookComponent implements OnInit {
   book?: BookPayload;
   id?: number;
   bookSub?: Subscription;
+  isUpdated: boolean = false;
 
 
   constructor(private bookService: BookService, private route: ActivatedRoute, private router: Router ) {
@@ -53,11 +54,15 @@ export class UpdateBookComponent implements OnInit {
       title: this.updateBookForm.value.title,
       resume: this.updateBookForm.value.resume,
       chapters: []
-} 
+    } 
     
     this.bookService.updateBook(this.book).subscribe(
       resp => {
-        this.router.navigate(['/library-editor']);
+        this.isUpdated = true
+
+        setTimeout( ()=> {
+          this.router.navigate(['/library-editor']);
+        },2000 ) 
         console.log("modification effectuée")
         console.log(this.id)
       }

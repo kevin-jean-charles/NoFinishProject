@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { AboutComponent } from './about/about.component';
 import { OhFourComponent } from './oh-four/oh-four.component';
 import { LibraryListPlayerComponent } from './library-list-player/library-list-player.component';
 import { BookCardComponent } from './book-card/book-card.component';
@@ -31,7 +30,6 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     LayoutComponent,
     FooterComponent,
-    AboutComponent,
     OhFourComponent,
     LibraryListPlayerComponent,
     BookCardComponent,

@@ -35,14 +35,14 @@ export class LibraryListEditorComponent implements OnInit, OnDestroy {
     this.bookService.deleteBook(id, currentUserId).subscribe(book =>{ console.log("ok")})
     this.databooks = this.books?.filter(book => book.id !== id);
     this.books = this.databooks
-    this.isDeleted = true;
+    this.isDeleted = true
+
+    setTimeout( ()=> {
+      this.isDeleted = false;
+    },1000 ) 
+
   }
 
-  // updateBook(id: number){
-  //   this.bookSub = this.bookService.getBookById(id).subscribe(book => {
-  //     this.book = book;
-  //     console.log(this.book);    
-  //   })
 
   ngOnDestroy() {
     this.bookSub?.unsubscribe();
