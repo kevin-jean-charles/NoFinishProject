@@ -30,6 +30,8 @@ export class BookCardComponent implements OnInit {
 
   deleteBook(id?: number){
     this.deleteBookById.emit(id)
+    console.log(id);
+    
   }
 
   updateBook(id?: number){

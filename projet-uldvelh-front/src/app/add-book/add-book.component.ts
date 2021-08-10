@@ -24,19 +24,6 @@ export class AddBookComponent implements OnInit {
 
   constructor(private bookService: BookService, private router: Router, private authService: AuthService, private userService: UserService) {
     this.addBookForm = new FormGroup({});
-
-    // this.bookPayload = {
-    //   id : 1,
-    //   title: '',
-    //   resume: '',
-    //   chapters: [],
-    //   user: {
-    //      username: '',
-    //      email: '',
-    //      password:'',
-    //      roles:[]
-    //    },
-    // }
   }
 
   ngOnInit() {
@@ -55,29 +42,25 @@ export class AddBookComponent implements OnInit {
     console.log(this.addBookForm);
   }
 
-  // getUser() {
-  //   console.log('Ok papa');
-    
-  //   console.log(this.currentUserId);
-  //   this.userService.getUserById(this.currentUserId);
-  //   console.log(this.userService.getUserById(this.currentUserId).subscribe(resp=> console.log(resp)));
-    
-  // }
 
   createBook(): void {
     this.newBook = {
       title: this.addBookForm.value.title,
       resume: this.addBookForm.value.resume
     }
-    this.sub = this.bookService.createBook(this.newBook).subscribe(data => {
+    this.bookService.createBook(this.newBook).subscribe(data => {
         console.log(data);
         this.userService.addUserInBook(this.currentUserId, data).subscribe(resp => {
+
           console.log('Histoire ajoutée à la liste de l\'utilisateur');
+
+        
+          this.bookService.getAllBooks();
+
         })
-        this.router.navigateByUrl('/library-editor');
+        this.router.navigate(['/library-editor']);
       }, error => {
         console.log('Failure Response');
       })
   }
-
 }

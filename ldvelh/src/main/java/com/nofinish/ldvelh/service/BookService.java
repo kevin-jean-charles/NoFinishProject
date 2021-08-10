@@ -14,7 +14,7 @@ public interface BookService {
 
     Book addChapterToBook(Long id, Chapter chapter);
 
-    void deleteBookById(Long id);
+    void deleteBookById(Long id, Long UserId);
 
     Book deleteChapterInBook(Long id, Long chapterId);
 

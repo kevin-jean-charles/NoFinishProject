@@ -1,8 +1,8 @@
-INSERT INTO users(username) VALUES ("flofloflo");
+/*INSERT INTO users(username) VALUES ("flofloflo");
 
 INSERT INTO book(title, resume)
 VALUES ("Tintin", "Les aventures de Tintin au pays du Soleil Levant");
-
+*/
 --INSERT INTO chapter(number, caption, end, intro, text)
 --VALUES(1, "Tintin se fait pourchasser par des chinois", false, true, "Tintin se fait pourchasser par des chinoisTintin se fait pourchasser par des chinoisTintin se fait pourchasser par des chinois");
 --INSERT INTO chapter(number, caption, end, intro, text)
