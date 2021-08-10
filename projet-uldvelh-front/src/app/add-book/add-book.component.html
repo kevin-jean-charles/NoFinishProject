@@ -7,15 +7,26 @@
 
     <form [formGroup]="addBookForm" (ngSubmit)="createBook()">
 
+      <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+        <div *ngIf="title?.errors?.required">
+          <p>Le titre est requis</p>
+        </div>
+        <!-- <div *ngIf="resume.errors?.required">
+          <p>Le titre est requis</p>
+        </div> -->
+      </div>
+      
       <div class="form-group">
         <label class="post-title">Title</label>
-        <input type="text" formControlName="title" class="form-control" placeholder="Title">
+        <input type="text" formControlName="title" class="form-control" placeholder="Title" required>
       </div>
+      
       <div class="form-group">
 
         <label class="post-resume">Resume</label>
-        <input type="text" formControlName="resume" class="form-control" placeholder="Resume">
+        <input type="text" formControlName="resume" class="form-control" placeholder="Resume" required>
       </div>
+     
 
       <div class="form-group">
 

@@ -51,7 +51,7 @@ export class AuthService {
 
 
   getUserId(): any {
-    return localStorage.getItem('TOKEN_APPLI') || 0;
+    return localStorage.getItem('USER_ID') || 0;
   }
 
   logout() {

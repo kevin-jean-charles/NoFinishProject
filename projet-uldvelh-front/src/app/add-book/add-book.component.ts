@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BookService } from '../service/book.service';
@@ -36,12 +36,18 @@ export class AddBookComponent implements OnInit {
 
   initForm() {
     this.addBookForm = new FormGroup({
-      title: new FormControl(''),
-      resume: new FormControl('')
+      title: new FormControl('', [Validators.required, Validators.minLength(1)]),
+      resume: new FormControl('', Validators.required)
     });
     console.log(this.addBookForm);
   }
 
+  get title() {
+    return this.addBookForm.get("title")
+  }
+  get resume() {
+    return this.addBookForm.get("resume")
+  }
 
   createBook(): void {
     this.newBook = {
