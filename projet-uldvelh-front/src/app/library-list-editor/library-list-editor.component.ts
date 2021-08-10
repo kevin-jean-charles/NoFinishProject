@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 import { BookPayload } from '../model/book-payload';
@@ -10,7 +10,7 @@ import { BookService } from '../service/book.service';
   templateUrl: './library-list-editor.component.html',
   styleUrls: ['./library-list-editor.component.scss']
 })
-export class LibraryListEditorComponent implements OnInit {
+export class LibraryListEditorComponent implements OnInit, OnDestroy {
 
   bookSub? : Subscription;
   book?: BookPayload;
@@ -23,14 +23,19 @@ export class LibraryListEditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserId = parseInt(this.authService.getUserId());
-    this.bookSub= this.bookService.getBooksByUserId(this.currentUserId).subscribe(resp=>{
+    this.bookService.getBooksByUserId(this.currentUserId).subscribe(resp=>{
       this.books = resp;
       console.log(this.books);
     })
+    this.bookSub = this.bookService.bookSubject.subscribe(resp => {
+      this.books = resp;
+})
   }
 
-  deleteBook(id: number){
-    this.bookSub = this.bookService.deleteBook(id).subscribe(book =>{ console.log("ok")})
+
+  deleteBook(id: number) {
+    const currentUserId = this.currentUserId || 0;
+    this.bookService.deleteBook(id, currentUserId).subscribe(book =>{ console.log("ok")})
     this.databooks = this.books?.filter(book => book.id !== id);
     this.books = this.databooks
     this.isDeleted = true;
@@ -41,4 +46,8 @@ export class LibraryListEditorComponent implements OnInit {
   //     this.book = book;
   //     console.log(this.book);    
   //   })
+
+  ngOnDestroy() {
+    this.bookSub?.unsubscribe();
+}
   }
