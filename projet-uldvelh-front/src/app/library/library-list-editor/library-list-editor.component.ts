@@ -1,9 +1,9 @@
 import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
-import { BookPayload } from '../model/book-payload';
-import { AuthService } from '../service/auth.service';
-import { BookService } from '../service/book.service';
+import { BookPayload } from '../../model/book-payload';
+import { AuthService } from '../../service/auth.service';
+import { BookService } from '../../service/book.service';
 
 @Component({
   selector: 'app-library-list-editor',

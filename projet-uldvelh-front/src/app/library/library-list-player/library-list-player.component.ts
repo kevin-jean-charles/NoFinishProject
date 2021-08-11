@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { BookPayload } from '../model/book-payload';
-import { AuthService } from '../service/auth.service';
-import { BookService } from '../service/book.service';
+import { BookPayload } from '../../model/book-payload';
+import { AuthService } from '../../service/auth.service';
+import { BookService } from '../../service/book.service';
 
 @Component({
   selector: 'app-library-list-player',
