@@ -6,8 +6,11 @@ import com.nofinish.ldvelh.model.User;
 import com.nofinish.ldvelh.repo.BookRepo;
 import com.nofinish.ldvelh.repo.ChapterRepo;
 import com.nofinish.ldvelh.repo.UserRepo;
+import com.nofinish.ldvelh.security.service.UserDetailsImpl;
 import com.nofinish.ldvelh.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -57,12 +60,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void deleteBookById(Long id, Long UserId) {
+    public void deleteBookById(Long id, Long userId) {
+
         Optional<Book> currentBook = bookRepo.findById(id);
-        Optional<User> userOptional = userRepo.findById(UserId);
+        Optional<User> userOptional = userRepo.findById(userId);
         Book deletedBook = null;
         User user = null;
-        if(currentBook.isPresent()&&userOptional.isPresent()) {
+
+        if (currentBook.isPresent() && userOptional.isPresent()) {
             deletedBook = currentBook.get();
             user = userOptional.get();
             user.getBookList().remove(deletedBook);

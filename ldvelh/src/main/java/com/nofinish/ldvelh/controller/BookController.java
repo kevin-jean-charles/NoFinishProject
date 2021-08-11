@@ -2,11 +2,16 @@ package com.nofinish.ldvelh.controller;
 
 import com.nofinish.ldvelh.model.Book;
 import com.nofinish.ldvelh.model.Chapter;
+import com.nofinish.ldvelh.payload.response.MessageResponse;
+import com.nofinish.ldvelh.security.service.UserDetailsImpl;
 import com.nofinish.ldvelh.service.BookService;
 import com.nofinish.ldvelh.service.ChapterService;
+import com.nofinish.ldvelh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +27,9 @@ public class BookController {
 
     @Autowired
     private final ChapterService chapterService;
+
+    @Autowired
+    private UserService userService;
 
     public BookController(BookService bookService, ChapterService chapterService) {
         this.bookService = bookService;
@@ -60,15 +68,33 @@ public class BookController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable("id") Long id,@RequestBody Book book) {
-        Book updatedBook = bookService.createOrUpdateBook(book);
-        return new ResponseEntity<>(updatedBook, HttpStatus.OK);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        Long TokenUserId = userDetails.getId();
+        if(id == TokenUserId ) {
+            Book updatedBook = bookService.createOrUpdateBook(book);
+            return new ResponseEntity<>(updatedBook, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 
     @DeleteMapping("/{id}/user/{userId}")
     public ResponseEntity<Book> deleteBookInUserList(@PathVariable("id") Long id,@PathVariable("userId") Long UserId ){
-        bookService.deleteBookById(id, UserId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        Long TokenUserId = userDetails.getId();
+        if(id == TokenUserId ) {
+            bookService.deleteBookById(id, UserId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
     }
+
+
+
     @DeleteMapping("/{id}/{chapterId}")
     public ResponseEntity<Book> deleteChapterInBook(@PathVariable("id") Long id, @PathVariable("chapterId") Long chapterId){
         bookService.deleteChapterInBook(id,chapterId);
