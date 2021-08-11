@@ -20,8 +20,8 @@ public class Book {
     private String title;
     private String resume;
 
-    @OneToMany
-    private List<Chapter> listChapters;
+/*    @OneToMany
+    private List<Chapter> listChapters;*/
 
 
 
