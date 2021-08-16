@@ -50,7 +50,6 @@ export class AuthService {
       );
   }
 
-
   getUserId(): any {
     return localStorage.getItem('USER_ID') || 0;
   }
@@ -63,7 +62,6 @@ export class AuthService {
 
   isAuthenticated(): Boolean{
     return localStorage.getItem('USER_ID') != null;
-
   }
 
   getToken() {
